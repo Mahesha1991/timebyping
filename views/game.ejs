@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+  $(document).ready(function(){
+
+    $(".btn").click(function(){
+      if( $(".guess").val() == ""){
+        $(".err").text("Value cannot be emtpy");
+      }else{
+        $.get('/game',{email : $('.email').val(),guess: $('.guess').val()},function(data,status){
+
+        $(".err").text("Computer generator Number : "+data.num + "  " + data.text);
+
+        var ga = parseInt($(".ga").text()) ;
+        var gu = parseInt($(".gu").text());
+        ga = ga + 1;
+        if(data.text == "Good Guess"){
+          gu = gu + 1;
+        }
+        $(".ga").text(ga);
+        $(".gu").text(gu);
+      });
+      }
+    });
+
+  });
+  </script>
+  <title>Game</title>
+</head>
+  <div class="user">
+
+    <h1>Welcome to Gussing Game!</h1>
+    <h3> If you guess a number in range of plus or minus 10, you will win! (1 to 100) </h3>
+
+      <label for="guess">Guess :  </label> <input type="text" name="guess" class = "guess" id="guess">
+      <input type="hidden" name="email" value=<%= email %> class="email">
+      <button class="btn"> Guess </button>
+      <br>
+      <br>
+      <br>
+    <div>Name: <p><%= name %></p></div>
+    <div>Email:<p><%= email %></p></div>
+    <div>Games:<p class="ga"><%= games %></p></div>
+    <div>Guesses:<p class="gu"><%= gusses %></p></div>
+    <h3 class="err"></h3>
+  </div>
+<body>
+
+</body>
+</html>

@@ -57,9 +57,6 @@ router.get('/', function(req, res, next) {
   });
 
 
-    console.log("true")
-  console.log(guess + email + genRandom)
-
 });
 
 module.exports = router;

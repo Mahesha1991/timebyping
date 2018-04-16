@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Results</title>
+  <style>
+  table{
+    border:1px solid blue;
+    padding : 20px;
+    align : center;
+  }
+  td{
+    padding : 10px;
+    border : 1px solid green;
+  }
+  .head{
+    font-size: 20px;
+    font-weight: 200px;
+  }
+  </style>
+</head>
+<a href="/">Back To Home</a>
+<body>
+
+  <table>
+    <tr class = "head">
+      <td>Name</td>
+      <td>Guesses</td>
+      <td>Games</td>
+    </tr>
+<% for(var i=0; i < results.length; i++) { %>
+   <tr>
+     <td><%= results[i].name %></td>
+     <td><%= results[i].gusses %></td>
+     <td><%= results[i].games %></td>
+   </tr>
+<% } %>
+</table>
+
+
+</body>
+</html>
